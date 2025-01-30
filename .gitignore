@@ -1,0 +1,62 @@
+# Quartus project files
+*.qpf
+*.qsf
+*.sdc
+
+# Quartus output files
+*.sof
+*.pof
+*.jic
+*.rpt
+*.summary
+*.done
+*.hexout
+
+# Simulation files
+simulation/
+*.vcd
+*.wlf
+*.vpd
+
+# Temporary and log files
+*.log
+*.tmp
+*.bak
+*.dmp
+
+# Database files
+db/
+*.ddb
+*.drc
+*.ddc
+
+# Incremental compilation files
+incremental_db/
+
+# Quartus cache files
+db/
+*.sld
+*.sopcinfo
+
+# Other generated files
+*.bsf
+*.cmp
+*.html
+*.htm
+*.map
+*.pin
+*.eqn
+*.qws
+*.tcx
+
+# Intel specific files
+*.quartus_sh_state
+quartus/
+
+# Platform Designer (Qsys) files
+*.sopcinfo
+*.qip
+*.qsys
+
+# Additional folders to ignore
+.ip_user_files/
