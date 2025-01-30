@@ -20,3 +20,9 @@ external ddr3 RAM etc.
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/ReyesMisael/Avalon_Bus_MM.git
+
+## Signals behavoral
+![Master_Writter](https://github.com/ReyesMisael/Avalon_Bus_MM/blob/main/images/Write_Master_MM.jpg)
+
+
+
