@@ -1,6 +1,5 @@
 # Quartus output files
-*.sof
-*.pof
+.pof
 *.jic
 *.rpt
 *.summary
@@ -19,12 +18,6 @@ simulation/
 *.bak
 *.dmp
 
-# Database files
-db/
-*.ddb
-*.drc
-*.ddc
-
 # Incremental compilation files
 incremental_db/
 
@@ -42,15 +35,6 @@ db/
 *.eqn
 *.qws
 *.tcx
-
-# Intel specific files
-*.quartus_sh_state
-quartus/
-
-# Platform Designer (Qsys) files
-*.sopcinfo
-*.qip
-*.qsys
 
 # Additional folders to ignore
 .ip_user_files/
