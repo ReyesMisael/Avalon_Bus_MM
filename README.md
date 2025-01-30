@@ -10,7 +10,13 @@ This project provides a comprehensive guide and implementation code for integrat
 - **Static Timing Analysis (STA):** Guidelines and scripts for performing static timing analysis to verify timing constraints and optimize the design.
 - **Platform Designer Integration:** Steps to create a custom component that can be used within Platform Designer, allowing for easy reuse and integration into larger systems.
 
+## About the project
+Aavalon Bus is a comunication protocol necesary to interact with diferents integrate on internal chip, this project burn by the necesity of implement own custom
+logic on quartus platform designer, and tranfer data in syncronous way from FPGA custom logic desing to FPGA resources such as NIOS II procesor, On chip RAM
+external ddr3 RAM etc. 
+
+
 ## Getting Started
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/avalon-bus-integration.git
+   git clone https://github.com/ReyesMisael/Avalon_Bus_MM.git
