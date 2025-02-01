@@ -21,8 +21,29 @@ external ddr3 RAM etc.
    ```bash
    git clone https://github.com/ReyesMisael/Avalon_Bus_MM.git
 
-## Signals behavoral
+## Description
+
+This is a syncronous bus, the MM letters stands by memory mapped, thats because we access to write or read registers of the diferent peripherials, this uses master MM and Slave MMto transfer data.  
+
+### Write Master MM
+ 
+write master MM have the follow signals descriptions
+
+
+| Signal Role       | Widhth        | Description   |
+| ------------      | ------------  | ------------  |
+| address           | 32            | By default, the address signal represents a byte By default, the address signal represents a byte ddressddress|
+| Byteenable        | 4             |               |
+| write             | 1             |               |
+| response1[1:0]    | 1             | Dato 9        |
+| writedata         | 32            | Dato 9        |
+
+The image above shows the conection of user logic with System on Chip peripherial in FPGA in this case we will to conect to Platform Designer components, specific on chip RAM 
+
 ![Master_Writter](https://github.com/ReyesMisael/Avalon_Bus_MM/blob/main/images/Write_Master_MM.jpg)
+
+### Waveform diagram
+
 
 
 
