@@ -30,13 +30,12 @@ This is a syncronous bus, the MM letters stands by memory mapped, thats because 
 write master MM have the follow signals descriptions
 
 
-| Signal Role       | Widhth        | Description   |
-| ------------      | ------------  | ------------  |
-| address           | 32            | By default, the address signal represents a byte By default, the address signal represents a byte ddressddress|
-| Byteenable        | 4             |               |
-| write             | 1             |               |
-| response1[1:0]    | 1             | Dato 9        |
-| writedata         | 32            | Dato 9        |
+| Signal Role   | Widht         | Description   |
+| ------------  | ------------  | ------------  |
+| Address       |       32      |               |
+| Byteenable    | 4             |               |
+| Write         | 1             |               |
+
 
 The image above shows the conection of user logic with System on Chip peripherial in FPGA in this case we will to conect to Platform Designer components, specific on chip RAM 
 
@@ -44,6 +43,6 @@ The image above shows the conection of user logic with System on Chip peripheria
 
 ### Waveform diagram
 
-
+![Waveform Driagram](https://github.com/ReyesMisael/Avalon_Bus_MM/blob/main/images/Waveform.jpg)
 
 
