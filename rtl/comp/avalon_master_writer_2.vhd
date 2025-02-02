@@ -50,25 +50,23 @@ component user_dcfifo
 	signal wrfull_sig      : std_logic;                      	-- Full FIFO (1 bit)
 	
 	-- Avalon MM signals
-   signal addr_counter 		: integer range 0 to 25000 := 0;  	-- counter for memory directions
-   signal data_counter 		: integer range 0 to 255 := 0;  		-- data
+   signal addr_counter 		: integer range 0 to 100 := 0;  		-- counter for memory directions
    signal waitstate    		: boolean := false;              	-- wait cycle
 
 begin
-
     
     process(clk, reset_n)
     begin
-        if reset_n = '0' then
+        if reset_n = '1' then
 		  
-            write <= '0';
-            chipselect <= '0';
-				rdclk_sig <= '0';
-            address <= (others => '0');
-            byteenable <= "1111";  			-- enable all bytes (32 bits)
-            writedata <= (others => '0');
-            addr_counter <= 0;
-            data_counter <= 0;
+            write 			<= '0';
+            chipselect 		<= '0';
+				rdclk_sig 		<= '0';
+				rdreq_sig 		<= '0';
+            address 			<= (others => '0');
+            byteenable 		<= "1111";  			-- enable all bytes (32 bits)
+            writedata 		<= (others => '0');
+            addr_counter 	<= 0;
 			        
 		  elsif rising_edge(clk) then
            
@@ -77,52 +75,45 @@ begin
 					
             else
                 
-                if addr_counter < 128  and rdempty_sig = '0' then					-- write only when fifo is empty and we do not stands the direction limit
-      
-                    -- enable signals
-                    chipselect 	<= '1';       -- Seleccionar el esclavo (memoria)
-                    write 			<= '1';       -- Indicar que es una operación de escritura
-						  rdclk_sig 	<= '1';
-						  byteenable 	<= "1111";
-                    -- Address and data																					-- if we have a offset in memory we need to adjust offset 
-                    address 		<= std_logic_vector(to_unsigned(addr_counter*4 + 16384, 32));  		-- Dirección de memoria (conversión a 32 bits)
-						  writedata 	<= q_sig;																				-- Data to send
-						  
-                    -- Check the response		is necesary  check documentation of the device with wich you expect the response
-                    if writeresponsevalid = '1' then
-                        case  response is 
-									when  "00" => 	
+                if addr_counter < 100  then					-- write only when fifo is empty and we do not stands the direction limit
+									writedata 			<= q_sig;
+                    if (writeresponsevalid = '1' and rdempty_sig = '0') then
+									chipselect 			<= '1';					      -- Select device (on chip ram)
+									write 				<= '1';	       				-- write signal 	
+									byteenable 			<= "1111";
+									writedata 			<= q_sig;
+									rdreq_sig 			<= '1';
+									address 				<= std_logic_vector(to_unsigned(addr_counter, 32));
+                        case  response is 										-- to handle response valid is necesary  check documentation of the device with wich you expect the response 
+									when  "00" => 
+											
+											addr_counter	<= addr_counter + 1;		-- contine with the data transmision and increment direction address
 										
-										addr_counter <= addr_counter + 1;
-										rdclk_sig	 <= '1';
-										data_counter <= data_counter + 1;
-										
-									when	"01" =>
-                            -- write operation fails 
-                            -- add custom code to implement any action
-									when  "10" =>
-                            -- Other state
-                            -- add custom code to implement any action
-									when others =>
-                            -- Unknown sate
-                            -- add custom code to implement any action
+									when	others =>		-- fail transmision state
+										writedata 		<= (others => '0');
+										address			<= (others => '0');
+										rdreq_sig 		<= '0';
+										write 			<= '0';
+										byteenable 		<= "0000";
                         end case;
                     end if;
 						  
                 else
-                    write <= '0';
-                    chipselect <= '0';
-						  rdreq_sig <= '0';
+                    write 			<= '0';
+                    chipselect 	<= '0';
+						  rdreq_sig 	<= '0';
                 end if;
             end if;
         end if;
 		  
    end process;
 	
+	
+	
 	user_dcfifo_inst : user_dcfifo 
 		PORT MAP (
 			data	 	=> user_data,
-			rdclk	 	=> rdclk_sig,		-- source data sig
+			rdclk	 	=> clk,				-- sycronous clock		
 			rdreq	 	=> rdreq_sig,		-- source data sig
 			wrclk	 	=> user_wrclk,		
 			wrreq	 	=> user_wrreq,

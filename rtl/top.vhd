@@ -46,17 +46,8 @@ architecture top_arch of top is
 		);
 	END COMPONENT;
 	
-	
-	
-	
 
 begin
-
-
-
-
-	
-
-	
+		
 
 end top_arch;

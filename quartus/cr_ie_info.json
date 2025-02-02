@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 10",
+		"os_version" : "10.0"
+	},
+	"error" : {
+		"executable" : "quartus_sh",
+		"comment" : "not_applicable",
+		"error_message" : "Access Violation at 0X00007FF8576FFAAD",
+		"source_file" : "unknown",
+		"line" : "0",
+		"stack_trace" : "\t0x7ff8576ffaac: ntdll + 0x2faac (RtlEnterCriticalSection + 0xc)\n\t0x7fff15f9e9be: ig75icd64 + 0x55e9be (DrvValidateVersion + 0x173e)\n\t0x7fff15f9e39b: ig75icd64 + 0x55e39b (DrvValidateVersion + 0x111b)\n\t0x7ff855de8cd6: USER32 + 0x88cd6 (GetClassNameA + 0x256)\n\t0x7ff855de926f: USER32 + 0x8926f (GetClassNameA + 0x7ef)\n\t0x7ff855d810c2: USER32 + 0x210c2 (SendMessageTimeoutW + 0x142)\n\t0x7ff857771373: ntdll + 0xa1373 (KiUserCallbackDispatcher + 0x23)\n\t0x7ff855062383: win32u + 0x2383 (NtUserDestroyWindow + 0x13)\n\t 0x71030a86: tk86 + 0x130a86 (Ttk_WinPlatformInit + 0x146)\n\t 0x71058764: tk86 + 0x158764 (Ttk_GetCurrentTheme + 0x3b4)\n\t 0x73f3350c: tcl86 + 0x1350c (Tcl_DeleteInterp + 0x26c)\n\t0x7ff8417bdca6: ccl_atcl + 0xdca6 (?atcl_exe_fini@@YAXXZ + 0x56)\n\t0x7ff8417e213b: ccl_atcl + 0x3213b (_CRT_INIT + 0xeb)\n\t0x7ff8417e23bd: ccl_atcl + 0x323bd (__DllMainCRTStartup + 0xe1)\n\t0x7ff8576e9a1c: ntdll + 0x19a1c (RtlActivateActivationContextUnsafeFast + 0x11c)\n\t0x7ff85772f1c9: ntdll + 0x5f1c9 (LdrShutdownProcess + 0x229)\n\t0x7ff85772ef7c: ntdll + 0x5ef7c (RtlExitUserProcess + 0xac)\n\t0x7ff85745e3ea: KERNEL32 + 0x1e3ea (FatalExit + 0xa)\n\t0x7ff8451629a6: MSVCR120 + 0x229a6 (_initterm_e + 0x21a)\n\t0x7ff60fa253ad: quartus_sh + 0x53ad (__tmainCRTStartup + 0x125)\n\t0x7ff857457373: KERNEL32 + 0x17373 (BaseThreadInitThunk + 0x13)\n\t0x7ff85771cc90: ntdll + 0x4cc90 (RtlUserThreadStart + 0x20)\n",
+		"subsystem" : "unknown"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "17.1.0",
+		"build" : "590",
+		"edition" : "Lite Edition"
+	}
+}

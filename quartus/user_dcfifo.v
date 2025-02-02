@@ -84,9 +84,9 @@ module user_dcfifo (
 		dcfifo_component.lpm_type = "dcfifo",
 		dcfifo_component.lpm_width = 32,
 		dcfifo_component.lpm_widthu = 10,
-		dcfifo_component.overflow_checking = "ON",
+		dcfifo_component.overflow_checking = "OFF",
 		dcfifo_component.rdsync_delaypipe = 4,
-		dcfifo_component.underflow_checking = "ON",
+		dcfifo_component.underflow_checking = "OFF",
 		dcfifo_component.use_eab = "ON",
 		dcfifo_component.wrsync_delaypipe = 4;
 
