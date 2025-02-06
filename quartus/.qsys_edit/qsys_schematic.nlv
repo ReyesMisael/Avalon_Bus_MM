@@ -2,16 +2,18 @@
 # 
 preplace inst qsys.nios2_gen2_0.reset_bridge -pg 1
 preplace inst qsys -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst qsys.nios2_gen2_0 -pg 1 -lvl 1 -y 70
+preplace inst qsys.nios2_gen2_0 -pg 1 -lvl 1 -y 50
+preplace inst qsys.custom_logic_0 -pg 1 -lvl 3 -y 60
 preplace inst qsys.nios2_gen2_0.cpu -pg 1
 preplace inst qsys.nios_ram -pg 1 -lvl 3 -y 220
 preplace inst qsys.clk_0 -pg 1 -lvl 2 -y 220
 preplace inst qsys.nios2_gen2_0.clock_bridge -pg 1
 preplace inst qsys.Data -pg 1 -lvl 3 -y 140
-preplace netloc FAN_OUT<net_container>qsys</net_container>(SLAVE)Data.reset1,(SLAVE)nios_ram.reset1,(MASTER)clk_0.clk_reset,(SLAVE)nios2_gen2_0.reset) 1 0 3 80 210 NJ 210 720
-preplace netloc POINT_TO_POINT<net_container>qsys</net_container>(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)clk_0.clk_in_reset) 1 1 1 480
-preplace netloc INTERCONNECT<net_container>qsys</net_container>(MASTER)nios2_gen2_0.instruction_master,(SLAVE)nios2_gen2_0.debug_mem_slave,(MASTER)nios2_gen2_0.data_master,(SLAVE)nios_ram.s1,(SLAVE)Data.s1) 1 0 3 60 230 440 190 700
+preplace netloc EXPORT<net_container>qsys</net_container>(SLAVE)custom_logic_0.conduit_end,(SLAVE)qsys.custom_logic_0_conduit_end) 1 0 3 NJ 290 NJ 290 NJ
+preplace netloc FAN_OUT<net_container>qsys</net_container>(SLAVE)custom_logic_0.clock,(SLAVE)Data.clk1,(SLAVE)nios_ram.clk1,(MASTER)clk_0.clk,(SLAVE)nios2_gen2_0.clk) 1 0 3 200 190 NJ 190 860
+preplace netloc FAN_OUT<net_container>qsys</net_container>(SLAVE)nios_ram.reset1,(SLAVE)Data.reset1,(MASTER)clk_0.clk_reset,(SLAVE)custom_logic_0.reset,(SLAVE)nios2_gen2_0.reset) 1 0 3 240 230 NJ 210 920
+preplace netloc INTERCONNECT<net_container>qsys</net_container>(MASTER)custom_logic_0.avalon_master_1,(MASTER)nios2_gen2_0.instruction_master,(MASTER)nios2_gen2_0.data_master,(SLAVE)nios_ram.s1,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)Data.s1) 1 0 4 220 210 620 90 880 50 1150
+preplace netloc POINT_TO_POINT<net_container>qsys</net_container>(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)clk_0.clk_in_reset) 1 1 1 600
 preplace netloc EXPORT<net_container>qsys</net_container>(SLAVE)clk_0.clk_in,(SLAVE)qsys.clk) 1 0 2 NJ 250 NJ
-preplace netloc FAN_OUT<net_container>qsys</net_container>(SLAVE)nios2_gen2_0.clk,(MASTER)clk_0.clk,(SLAVE)nios_ram.clk1,(SLAVE)Data.clk1) 1 0 3 60 30 NJ 30 680
-levelinfo -pg 1 0 30 840
-levelinfo -hier qsys 40 200 510 750 830
+levelinfo -pg 1 0 170 1190
+levelinfo -hier qsys 180 360 690 950 1170
